@@ -466,9 +466,9 @@
     },
     {
       "login": "fydar",
-      "name": "Anthony Marmont",
+      "name": "Fydar",
       "avatar_url": "https://avatars.githubusercontent.com/u/19309165?v=4",
-      "profile": "https://anthonymarmont.com/",
+      "profile": "https://fydar.dev",
       "contributions": [
         "code"
       ]
@@ -632,6 +632,33 @@
       "name": "Proxid",
       "avatar_url": "https://avatars.githubusercontent.com/u/8007327?v=4",
       "profile": "https://github.com/kristian15959",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "YerkoAndrei",
+      "name": "Yerko Andrei",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19843418?v=4",
+      "profile": "http://yerkoandrei.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ComputerSmoke",
+      "name": "Addison Schmidt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22194459?v=4",
+      "profile": "https://github.com/ComputerSmoke",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "timconner",
+      "name": "Tim Conner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22841670?v=4",
+      "profile": "https://github.com/timconner",
       "contributions": [
         "code"
       ]
