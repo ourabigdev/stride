@@ -581,6 +581,60 @@
         "code",
         "content"
       ]
+    },
+    {
+      "login": "timcassell",
+      "name": "Tim Cassell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35501420?v=4",
+      "profile": "https://www.timcassell.net/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dloe",
+      "name": "Dylan Loe",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18317814?v=4",
+      "profile": "http://www.linkedin.com/in/dylan-loe",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "wrshield",
+      "name": "Will S",
+      "avatar_url": "https://avatars.githubusercontent.com/u/145876802?v=4",
+      "profile": "https://github.com/wrshield",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "soorMSWE",
+      "name": "Ryan Soo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/147351572?v=4",
+      "profile": "https://github.com/soorMSWE",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "MechWarrior99",
+      "name": "MechWarrior99",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8076495?v=4",
+      "profile": "https://github.com/MechWarrior99",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kristian15959",
+      "name": "Proxid",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8007327?v=4",
+      "profile": "https://github.com/kristian15959",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
