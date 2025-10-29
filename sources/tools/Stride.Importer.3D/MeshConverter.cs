@@ -874,7 +874,10 @@ namespace Stride.Importer.ThreeD
 
                 totalClusterCount = (int)mesh->MNumBones;
                 if (totalClusterCount > 0)
+                {
                     hasSkinningPosition = true;
+                    hasSkinningNormal = mesh->MNormals != null;
+                }
             }
 
             // Build the vertex declaration
@@ -1157,7 +1160,7 @@ namespace Stride.Importer.ThreeD
             fixed (byte* bufferPointer = buffer)
             {
                 var sourcePointer = (byte*)texture->PcData;
-                System.Runtime.CompilerServices.Unsafe.CopyBlockUnaligned(bufferPointer, sourcePointer, arraySize);
+                Core.Utilities.CopyWithAlignmentFallback(bufferPointer, sourcePointer, arraySize);
             }
             System.IO.File.WriteAllBytes(path, buffer);
         }
