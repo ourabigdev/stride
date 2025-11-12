@@ -48,7 +48,7 @@ Our [Roadmap](https://doc.stride3d.net/latest/en/contributors/roadmap.html) comm
    - *Optional* (to build the VSIX package): **Visual Studio extension development**
 
 > [!NOTE]
-> The installation of Visual Studio with the required components may require up to **14 GB of disk space**, depending on your system and selected components.
+> The installation of Visual Studio with the required components may require up to **19 GB of disk space**, depending on your system and selected components.
 
 > [!WARNING]
 > If this is your first time installing the .NET SDK, you might need to restart your system after the installation so that the system can recognize the new environment variables.
@@ -71,7 +71,7 @@ Our [Roadmap](https://doc.stride3d.net/latest/en/contributors/roadmap.html) comm
 
 1. **Install** [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/) (Go to Tools for Visual Studio and press download next to Build Tools for Visual Studio 2026 once it is out) with the same prerequisites listed above.
 2. **Add MSBuild to your system's PATH:**
-   - Add MSBuild's directory to your `PATH` environment variable (e.g., `C:\Program Files (x86)\Microsoft Visual Studio\2026\BuildTools\MSBuild\Current\Bin`).
+   - Add MSBuild's directory to your `PATH` environment variable (e.g., `C:\Program Files\Microsoft Visual Studio\18\Insiders\MSBuild\Current\Bin`).
 3. **Clone the repository:**
    ```bash
    git lfs clone https://github.com/stride3d/stride.git
