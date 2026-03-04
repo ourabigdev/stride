@@ -54,6 +54,11 @@ namespace Stride.Graphics.Regression
         /// </summary>
         public static bool ForceInteractiveMode { get; set; }
 
+        /// <summary>
+        /// Force image to be saved even if image comparison was a success and no error during the test.
+        /// </summary>
+        public static bool ForceSaveImageOnSuccess { get; set; }
+
 
         /// <summary>
         ///   Gets the instance of the <see cref="FrameGameSystem"/> where the tests
@@ -98,6 +103,11 @@ namespace Stride.Graphics.Regression
         private BackBufferSizeMode backBufferSizeMode;
 
 #if STRIDE_PLATFORM_DESKTOP
+        /// <summary>
+        /// Forces render doc capture even if test didn't fail. This can be used only when <see cref="CaptureRenderDocOnError"/> is set.
+        /// </summary>
+        public static bool ForceCaptureRenderDocOnSuccess = false;
+
         /// <summary>
         ///   Gets or sets a value indicating whether RenderDoc should capture a frame when an error occurs
         ///   or a test fails.
@@ -153,6 +163,10 @@ namespace Stride.Graphics.Regression
 
             // by default we want the same size for the back buffer on mobiles and windows.
             BackBufferSizeMode = BackBufferSizeMode.FitToDesiredValues;
+
+            // Only make window visible in interactive mode,
+            // otherwise it's quite disrupting for user: new window might display on top and steal focus
+            MakeWindowVisibleOnRun = ForceInteractiveMode;
         }
 
         /// <inheritdoc />
@@ -178,7 +192,6 @@ namespace Stride.Graphics.Regression
             // Disable splash screen
             SceneSystem.SplashScreenEnabled = false;
         }
-
 
         /// <summary>
         ///   Saves a Texture locally or on the test server.
@@ -356,6 +369,16 @@ namespace Stride.Graphics.Regression
         }
 #endif
 
+        protected override void OnWindowCreated()
+        {
+            base.OnWindowCreated();
+
+            // Disabled for SDL as a position of (0,0) actually means that the client area of the
+            // window will be at (0,0) not the top left corner of the non-client area of the window.
+            if (Context.ContextType != AppContextType.DesktopSDL)
+                Window.Position = Int2.Zero; // avoid possible side effects due to position of the window in the screen.
+        }
+
         /// <inheritdoc/>
         protected override async Task LoadContent()
         {
@@ -377,12 +400,6 @@ namespace Stride.Graphics.Regression
 
             if (!ForceInteractiveMode)
                 InitializeSimulatedInputSource();
-
-#if !STRIDE_UI_SDL
-            // Disabled for SDL as a position of (0,0) actually means that the client area of the
-            // window will be at (0,0) not the top left corner of the non-client area of the window.
-            Window.Position = Int2.Zero; // avoid possible side effects due to position of the window in the screen.
-#endif
 
             Script.AddTask(RegisterTestsInternal);
 
@@ -594,7 +611,8 @@ namespace Stride.Graphics.Regression
                 // If no comparison errors, and no test errors, discard the capture
                 if (game.comparisonFailedMessages.Count == 0 &&
                     game.comparisonMissingMessages.Count == 0 &&
-                    exceptionOrFailedAssert is null)
+                    exceptionOrFailedAssert is null &&
+                    !ForceCaptureRenderDocOnSuccess)
                 {
                     game.DiscardFrameCapture();
                 }
@@ -710,6 +728,10 @@ namespace Stride.Graphics.Regression
                 comparisonFailedMessages.Add($"* {testLocalFileName} (current)");
                 foreach (var file in testFileNames)
                     comparisonFailedMessages.Add($"  {file} ({ (matchingImage ? "reference" : "different platform/device") })");
+            }
+            else if (ForceSaveImageOnSuccess)
+            {
+                ImageTester.SaveImage(image, testLocalFileName);
             }
             else
             {
